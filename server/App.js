@@ -70,6 +70,19 @@ app.post("/api/post", (req, res) => {
    res.json({"result": true});
 });
 
+//로그인
+app.post("/users/login", (req, res) => {
+   const { id, pwd } = req.body.data;
+   const users = [
+      { "id": "test", "pwd": "1234" },
+      { "id": "hong", "pwd": "1111" },
+      { "id": "test1234", "pwd": "test1234" }
+   ];
+   console.log(id, pwd);
+   const userIdx = users.findIndex(user => user.id === id && user.pwd === pwd );
+   const result = userIdx !== -1 ? true : false;
+   res.json({"result": result});
+});
 
 
 //5. 서버 시작
