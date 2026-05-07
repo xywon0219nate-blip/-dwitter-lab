@@ -1,4 +1,5 @@
 import express from 'express';
+import * as controller from '../controller/usersController.js';
 
 const router = express.Router();
 
@@ -8,15 +9,8 @@ const users = [
       { "id": "test1234", "pwd": "test1234" }
    ];
 
-router.get("/", (req, res) => {
-   res.json({"users": users});
-});    
+router.get("/", controller.getUsers);
 
-router.post("/login", (req, res) => {
-   const { id, pwd } = req.body.data;
-   const userIdx = users.findIndex(user => user.id === id && user.pwd === pwd );
-   const result = userIdx !== -1 ? true : false;
-   res.json({"result": result});
-});
+router.post("/login", controller.getLogin);
 
 export default router;
