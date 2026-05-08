@@ -1,12 +1,6 @@
-
+import * as repository from '../repository/footerRepo.js'
 
 export const getFooter = (req, res, next)=>{
-   const footer = {
-      "description": "Junior Software Engineer Judy's Portfolio - All right reserved",
-      "list": [
-               {"href": "#", "icon": "github"},
-               {"href": "#", "icon": "linkedin"}
-         ]
-   }
+   const footer = repository.getFooter();
    res.json({"result": footer});
 }
