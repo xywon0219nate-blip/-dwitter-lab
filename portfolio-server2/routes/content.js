@@ -74,48 +74,56 @@ const work = {
          ],
          "projects": [
                {
+                  "pid" :"p001",
                   "img": "images/projects/project1.webp",
                   "alt": "project-img",
                   "title": "Project#1",
                   "description": "Clone Coding with HTML, CSS"
                },
                {
+                  "pid" :"p002",
                   "img": "images/projects/project2.webp",
                   "alt": "project-img",
                   "title": "Project#2",
                   "description": "Clone Coding with HTML, CSS"
                },
                {
+                  "pid" :"p003",
                   "img": "images/projects/project3.webp",
                   "alt": "project-img",
                   "title": "Project#3",
                   "description": "Clone Coding with HTML, CSS"
                },
                {
+                  "pid" :"p004",
                   "img": "images/projects/project4.webp",
                   "alt": "project-img",
                   "title": "Project#4",
                   "description": "Clone Coding with HTML, CSS"
                },
                {
+                  "pid" :"p005",
                   "img": "images/projects/project5.webp",
                   "alt": "project-img",
                   "title": "Project#5",
                   "description": "Clone Coding with HTML, CSS"
                },
                {
+                  "pid" :"p006",
                   "img": "images/projects/project6.webp",
                   "alt": "project-img",
                   "title": "Project#6",
                   "description": "Clone Coding with HTML, CSS"
                },
                {
+                  "pid" :"p007",
                   "img": "images/projects/project7.webp",
                   "alt": "project-img",
                   "title": "Project#7",
                   "description": "Clone Coding with HTML, CSS"
                },
                {
+                  "pid" :"p008",
                   "img": "images/projects/project8.webp",
                   "alt": "project-img",
                   "title": "Project#8",
@@ -151,10 +159,10 @@ router.get('/testimonials', (req,res,next) => {
    res.json({"result":testimonials});
 })
 
-// router.get('/work/project/:pid', (req, res, next)=>{
-//    const pid = req.params.pid;
-//    const project = work.projects.find(project => project.pid === pid);
-//    res.json({"result": project});
-// });
+router.get('/work/project/:pid', (req, res, next)=>{
+   const pid = req.params.pid;
+   const project = work.projects.find(project => project.pid === pid);
+   res.json({"result": project});
+});
 
 export default router;

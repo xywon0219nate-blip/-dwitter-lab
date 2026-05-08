@@ -3,7 +3,8 @@ import express from 'express';
 
 const router = express.Router();
 
-router.get('/header', (req,res,next)=> {
+router.get('/', (req,res,next)=> {
+   // app.js에서 이미 .header라고 작성하였기에, 해당 부분에서는 '/'만 작성하면 됨
    const header = {
       "logo": {
          "img": "images/favicon.ico",

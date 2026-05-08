@@ -14,7 +14,6 @@ app.use(express.json());
 // app.use(express.urlencoded({extended:false}));
 
 
-// app router 추후 추가
 app.use('/header', headerRouter);
 app.use('/content', contentRouter);
 app.use('/footer', footerRouter);

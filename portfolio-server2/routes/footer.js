@@ -1,7 +1,7 @@
 import express from "express";
 
 const router = express.Router();
-router.get('/footer', (req,res,next)=> {
+router.get('/', (req,res,next)=> { 
    const footer = {
       "description": "Junior Software Engineer Judy's Portfolio - All right reserved",
       "list": [
