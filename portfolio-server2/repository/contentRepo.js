@@ -2,37 +2,37 @@ import db from '../db/connection.js';
 
 
 export const getHome = async() => {
-   const sql = `select home from portfolio`;
+   const sql = 'select home from portfolio';
    const [results] = await db.execute(sql, []);
-   return await results[0].home;
+   return results[0].home;
 }
 
 export const getAbout = async() => {
-   const sql = `select about from portfolio`;
+   const sql = 'select about from portfolio';
    const [results] = await db.execute(sql, []);
-   return await results[0].about;
+   return results[0].about;
 }
 
 export const getSkills = async() => {
-   const sql = `select skills from portfolio`;
+   const sql = 'select skills from portfolio';
    const [results] = await db.execute(sql, []);
    return results[0].skills;
 }
 
 export const getWork = async() => {
-   const sql = `select work from portfolio`;
+   const sql = 'select work from portfolio';
    const [results] = await db.execute(sql, []);
    return results[0].work;
 }
 
 export const getTestimonials = async() => {
-   const sql = `select testimonials from portfolio`;
+   const sql = 'select testimonials from portfolio';
    const [results] = await db.execute(sql, []);
    return results[0].testimonials;
 }
 
 export const getProject = async(pid) => {
-   const sql = `select work from portfolio`;
+   const sql = 'select work from portfolio';
    const [results] = await db.execute(sql,[]);
    const project = await results[0].work.projects;
    return project.find(project => project.pid === pid);

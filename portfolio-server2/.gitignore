@@ -1,3 +1,4 @@
 # node_modules 
 # gitignore의 경우 주석이 #임
 node_modules
+.env
