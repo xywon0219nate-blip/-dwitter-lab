@@ -15,6 +15,12 @@ create table portfolio(
 );
 select * from portfolio;
 select footer from portfolio;
+select * from employee;
+select home from portfolio;
+select about from portfolio;
+select `work` from portfolio;
+select testimonials from portfolio;
+
 
 insert into portfolio(header, home, about, skills, `work`, testimonials, footer, create_at)
 	values(
