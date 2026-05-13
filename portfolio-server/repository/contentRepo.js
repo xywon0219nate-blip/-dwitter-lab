@@ -31,7 +31,9 @@ export const getTestimonials = async() => {
    return results[0].testimonials;
 }
 
-export const getProject = (pid) => {
-   const project = work.projects.find(project => project.pid === pid);
-   return project;
+export const getProject = async(pid) => {
+   const sql = `select work from portfolio`;
+   const [results] = await db.execute(sql,[]);
+   const project = await results[0].work.projects;
+   return project.find(project => project.pid === pid);
 }
