@@ -1,4 +1,5 @@
 import express from "express";
+import * as controller from "../controller/contentController.js";
 
 const router = express.Router();
 router.get('/home',(req,res,next) => {

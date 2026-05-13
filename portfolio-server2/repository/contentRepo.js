@@ -7,7 +7,7 @@ export const getHome = async() => {
    return await results[0].home;
 }
 
-export const getAbout = () => {
+export const getAbout = async() => {
    const sql = `select about from portfolio`;
    const [results] = await db.execute(sql, []);
    return await results[0].about;

@@ -1,4 +1,5 @@
 import express from "express";
+import * as controller from "../controller/footerController.js";
 
 const router = express.Router();
 router.get('/', (req,res,next)=> { 
