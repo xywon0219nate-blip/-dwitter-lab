@@ -44,11 +44,17 @@ INSERT INTO tweets (user_id, `content`) VALUES
 select * from users;
 select * from tweets;
 
+-- 로그인
+-- SELECT * FROM users WHERE username = 'user1';
+select conut(username) as count,
+		(select id from users where username = 'user1') as id, 
+        (select username from users where username = 'user1') as username, 
+        (select password from users where username = 'user1') as password, 
+        (select avatar_url from users where username = 'user1') as avatar_url
+	from users
+    where username = 'user1';
 
-
-
-
-
+select * from users;
 
 
 

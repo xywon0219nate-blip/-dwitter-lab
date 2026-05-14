@@ -1,23 +1,23 @@
-   // =====================================================
-   // 2단계: 실제 백엔드 API 연동
-   // vite.config.js proxy → /api, /upload → http://localhost:3001
-   // =====================================================
+// =====================================================
+// 2단계: 실제 백엔드 API 연동
+// vite.config.js proxy → /api, /upload → http://localhost:3001
+// =====================================================
 
-   const BASE = "/api";
+const BASE = "/api";
 
-   // ── 공통 헬퍼 ─────────────────────────────────────────
-   function getToken() {
+// ── 공통 헬퍼 ─────────────────────────────────────────
+function getToken() {
    return localStorage.getItem("dwitter_token");
-   }
+}
 
-   function buildHeaders(auth = false) {
+function buildHeaders(auth = false) {
    const h = { "Content-Type": "application/json" };
    if (auth) h["Authorization"] = `Bearer ${getToken()}`;
    return h;
-   }
+}
 
-   // ✅ 2단계: 401 응답 시 전역 이벤트 발생 → AuthContext가 자동 로그아웃 처리
-   async function request(url, options = {}) {
+// ✅ 2단계: 401 응답 시 전역 이벤트 발생 → AuthContext가 자동 로그아웃 처리
+async function request(url, options = {}) {
    const res  = await fetch(url, options);
    const data = await res.json();
 
@@ -28,13 +28,13 @@
    }
 
    if (!res.ok) throw new Error(data.message || "요청 실패");
-   return data;
-   }
+  return data;
+}
 
-   // ── Auth ──────────────────────────────────────────────
-   export const authAPI = {
+// ── Auth ──────────────────────────────────────────────
+export const authAPI = {
    login: (body) =>
-      request(`${BASE}/auth/login`, {
+      request(`${BASE}/auth/login`, {    
          method: "POST",
          headers: buildHeaders(),
          body: JSON.stringify(body),
@@ -46,33 +46,33 @@
          headers: buildHeaders(),
          body: JSON.stringify(body),
       }),
-   };
+};
 
-   // ── Tweets ────────────────────────────────────────────
-   export const tweetAPI = {
+// ── Tweets ────────────────────────────────────────────
+export const tweetAPI = {
    getAll: () =>
       request(`${BASE}/tweets`, { headers: buildHeaders() }),
 
-   getMy: () =>
+   getMy: () =>  //api/tweets/my
       request(`${BASE}/tweets/my`, { headers: buildHeaders(true) }),
 
    create: (content) =>
       request(`${BASE}/tweets`, {
-         method: "POST",
-         headers: buildHeaders(true),
-         body: JSON.stringify({ content }),
+      method: "POST",
+      headers: buildHeaders(true),
+      body: JSON.stringify({ content }),
       }),
 
    update: (id, content) =>
       request(`${BASE}/tweets/${id}`, {
-         method: "PUT",
-         headers: buildHeaders(true),
-         body: JSON.stringify({ content }),
+      method: "PUT",
+      headers: buildHeaders(true),
+      body: JSON.stringify({ content }),
       }),
 
    remove: (id) =>
       request(`${BASE}/tweets/${id}`, {
-         method: "DELETE",
-         headers: buildHeaders(true),
+      method: "DELETE",
+      headers: buildHeaders(true),
       }),
-   };
+};
