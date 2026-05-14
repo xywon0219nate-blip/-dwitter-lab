@@ -56,5 +56,36 @@ select conut(username) as count,
 
 select * from users;
 
+-- my tweets
+SELECT
+      t.id,
+      t.content,
+      t.created_at,
+      u.id AS user_id,
+      u.username,
+      u.avatar_url
+   FROM tweets t
+   INNER JOIN users u ON t.user_id = u.id
+   where t.user_id = 2 ORDER BY t.created_at DESC;
 
+select * from tweets;
 
+select count(*) tweets;
+
+select * from information_schema.views
+	where table_schema = 'dwitter';
+
+select * from tweets_view
+	order by created_at desc;
+
+create view tweets_view
+as
+SELECT
+      t.id,
+      t.content,
+      t.created_at,
+      u.id AS user_id,
+      u.username,
+      u.avatar_url
+   FROM tweets t
+   INNER JOIN users u ON t.user_id = u.id;
