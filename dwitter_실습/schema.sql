@@ -89,3 +89,10 @@ SELECT
       u.avatar_url
    FROM tweets t
    INNER JOIN users u ON t.user_id = u.id;
+   
+   --
+   select * from information_schema.views
+	where table_schema = 'dwitter';
+    
+select * from users;
+desc users;

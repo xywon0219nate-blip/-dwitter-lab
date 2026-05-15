@@ -42,7 +42,7 @@ try {
  * 회원가입
  */
 export const getAuth = async (req, res) => {
-const SECRET = process.env.JWT_SECRET; // .env에서 불러오기
+const SECRET = process.env.JWT_SECRET; // .env에서 불러오기, 토큰 생성
 const { userName, password, profileImage } = req.body;
 
 try {
